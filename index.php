@@ -1,5 +1,5 @@
 <?php session_start();
- include('dbcon.php'); ?>
+include('dbcon.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
     <!-- Visit codeastro.com for more projects -->
@@ -10,8 +10,7 @@
 		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" href="css/matrix-style.css" />
         <link rel="stylesheet" href="css/matrix-login.css" />
-        <link href="font-awesome/css/fontawesome.css" rel="stylesheet" />
-        <link href="font-awesome/css/all.css" rel="stylesheet" />
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
     </head>
@@ -24,21 +23,21 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="fas fa-user-circle"></i></span><input type="text" name="user" placeholder="Username" required/>
+                            <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="user" placeholder="Username" required/>
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="fas fa-lock"></i></span><input type="password" name="pass" placeholder="Password" required />
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="pass" placeholder="Password" required />
                         </div>
                     </div>
                 </div>
                 <div class="form-actions center">
                     <!-- <span class="pull-right"><a type="submit" href="index.html" class="btn btn-success" /> Login</a></span> -->
                     <!-- <input type="submit" class="button" title="Log In" name="login" value="Admin Login"></input> -->
-                    <button type="submit" class="btn btn-block btn-large btn-info" title="Log In" name="login" value="Admin Login">Admin Login</button>
+                    <button type="submit" class="btn btn-block btn-large btn-warning" title="Log In" name="login" value="Admin Login">Staff Login</button>
                 </div>
             </form>
             <?php
@@ -49,14 +48,14 @@
 
                         $password = md5($password);
                         
-                        $query 		= mysqli_query($con, "SELECT * FROM admin WHERE  password='$password' and username='$username'");
+                        $query 		= mysqli_query($con, "SELECT * FROM staffs WHERE password='$password' and username='$username'");
                         $row		= mysqli_fetch_array($query);
                         $num_row 	= mysqli_num_rows($query);
                         
                         if ($num_row > 0) 
                             {			
                                 $_SESSION['user_id']=$row['user_id'];
-                                header('location:admin/index.php');
+                                header('location:staff-pages/index.php');
                                 
                             }
                         else
@@ -70,12 +69,12 @@
                             }
                     }
             ?>
-            <div class="pull-left">
-            <a href="customer/index.php"><h6>Customer Login</h6></a>
+            <div class="pull-left"><!-- Visit codeastro.com for more projects -->
+            <a href="../index.php"><h6>Admin Login</h6></a>
             </div>
 
             <div class="pull-right">
-            <a href="staff/index.php"><h6>Staff Login</h6></a>
+            <a href="../customer"><h6>Customer Login</h6></a>
             </div>
             
         </div>
@@ -85,5 +84,5 @@
         <script src="js/bootstrap.min.js"></script> 
 <script src="js/matrix.js"></script>
     </body>
-<!-- Visit codeastro.com for more projects -->
+
 </html>
