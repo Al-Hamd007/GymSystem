@@ -15,7 +15,6 @@ $(document).ready(function(){
 		},
 		validationOptions : {
 			rules: {
-				fullname: "required",
 				username: "required",
 				password: "required",
 				password2: {
@@ -25,10 +24,9 @@ $(document).ready(function(){
 				eula: "required"
 			},
 			messages: {
-				fullname: "Please enter staff's fullname",
-				username: "Please enter a username",
+				username: "Please enter your name or username",
 				password: "You must enter the password",
-				password2: { equalTo: "Password doesnot match at all!" },
+				password2: { equalTo: "Password don't match" },
 				email: { required: "Please, enter your email", email: "Correct email format is name@domain.com" },
 				eula: "You must accept the eula"
 			},
